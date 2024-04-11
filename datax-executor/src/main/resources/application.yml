@@ -1,20 +1,25 @@
 # web port
 server:
-  port: ${server.port}
-  #port: 8081
+#  port: ${server.port}
+  port: 8081
+
+data:
+  path: /data
+  job: E:/datax/datax/job/
+  datax: E:/datax/datax/bin/datax.py
 
 # log config
 logging:
   config: classpath:logback.xml
   path: ${data.path}/applogs/executor/jobhandler
-  #path: ./data/applogs/executor/jobhandler
+#  path: /data/applogs/executor/jobhandler
 
 datax:
   job:
     admin:
       ### datax admin address list, such as "http://address" or "http://address01,http://address02"
-      #addresses: http://127.0.0.1:8080
-      addresses: http://127.0.0.1:${datax.admin.port}
+      addresses: http://127.0.0.1:8080
+#      addresses: http://127.0.0.1:${datax.admin.port}
     executor:
       appname: datax-executor
       ip:
@@ -30,7 +35,8 @@ datax:
 
   executor:
     #jsonpath: D:\\temp\\executor\\json\\
-    jsonpath: ${json.path}
+    jsonpath: ${data.job}
 
   #pypath: F:\tools\datax\bin\datax.py
-  pypath: ${python.path}
+  pypath: ${data.datax}
+
